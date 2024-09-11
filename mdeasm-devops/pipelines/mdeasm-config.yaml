@@ -1,0 +1,29 @@
+trigger: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: AzureCLI@2
+  displayName: Run Command
+  inputs:
+    azuresubscription: # name of the azure service connection 
+    scriptType: "bash"
+    scriptLocation: "inlineScript"
+    addSpnToEnvironment: true
+    inlineScript: |
+      echo "Running AZ CLI commands"
+      
+      # authenticate using AZ CLI
+      az account show
+
+      # get access token
+      access_token=$(az account get-access-token --scope=https://easm.defender.microsoft.com/.default --query accessToken --output tsv)
+
+      # create discovery group and populate with seeds
+      curl -X PUT "https://westeurope.easm.defender.microsoft.com/subscriptions/SUBSCRIPTION-ID/resourceGroups/RESOURCE-GROUP/workspaces/MDEASM-WORKSPACE-NAME/discoGroups/DISCO-GROUP-NAME?api-version=2024-03-01-preview" \
+        -H "Authorization: Bearer $access_token" \
+        -H "Content-Type: application/json" \
+        -d @seed-data.json
+
+

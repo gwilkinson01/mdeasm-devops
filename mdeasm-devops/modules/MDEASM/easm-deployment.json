@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.9.1.41621",
+      "templateHash": "10012041125269374402"
+    }
+  },
+  "parameters": {
+    "name": {
+      "type": "string",
+      "defaultValue": "mdeasm1"
+    },
+    "region": {
+      "type": "string",
+      "defaultValue": "westeurope"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Easm/workspaces",
+      "apiVersion": "2023-04-01-preview",
+      "name": "[parameters('name')]",
+      "location": "[parameters('region')]",
+      "properties": {}
+    }
+  ]
+}

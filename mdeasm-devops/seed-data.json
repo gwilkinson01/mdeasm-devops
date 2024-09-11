@@ -1,0 +1,21 @@
+{
+    "description": "seeds for production instance of MDEASM",
+    "frequencyMilliseconds": 0,
+    "tier": "advanced",
+    "excludes": [
+        {"name": "example.com", "kind": "domain"},
+        {"name": "john.doe@email.com", "kind": "contact"}
+    ],
+    "seeds": [
+        {"name": "jane.doe@email.com", "kind": "contact"},
+        {"name": "12345", "kind": "as"},
+        {"name": "example.co.nl", "kind": "host"},
+        {"name": "8.8.8.8/24", "kind": "ipBlock"},
+        {"name": "example1.com", "kind": "domain"},
+        {"name": "example2.com", "kind": "domain"}
+    ],
+    "names": [
+      "Org A",
+      "Org B"
+    ]
+  }
